@@ -9,6 +9,9 @@ class Color(models.Model):
     """
     name = models.CharField(max_length=200)
 
+    def __unicode__(self):
+        return self.name
+
 class Size(models.Model):
     """
     Модель размеров товаров.
@@ -16,12 +19,18 @@ class Size(models.Model):
     """
     name = models.CharField(max_length=200)
 
+    def __unicode__(self):
+        return self.name
+
 class Type(models.Model):
     """
     Модель разделов/типов товаров.
     Заполняется из стандартной Django админки.
     """
     name = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.name
 
 class Photo(models.Model):
     """
@@ -35,11 +44,14 @@ class Item(models.Model):
     """
     add_date = models.DateTimeField(default=datetime.now, blank=True)
     name = models.CharField(max_length=200)
-    colors = models.ManyToManyField(Color)
-    sizes = models.ManyToManyField(Size)
-    types = models.ManyToManyField(Type)
-    photos = models.ManyToManyField(Photo)
-    quantity = models.IntegerField()
-    cost = models.FloatField()
-    description = models.TextField()
+    colors = models.ManyToManyField(Color, blank=True, null=True)
+    sizes = models.ManyToManyField(Size, blank=True, null=True)
+    types = models.ForeignKey(Type, blank=True, null=True)
+    photos = models.ManyToManyField(Photo, blank=True, null=True)
+    quantity = models.IntegerField(blank=True, null=True)
+    cost = models.FloatField(blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     show = models.BooleanField() # Показывать ли на сайте
+
+    def __unicode__(self):
+        return self.name
