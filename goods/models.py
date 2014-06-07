@@ -39,6 +39,10 @@ class Photo(models.Model):
     """
     image = models.ImageField(null=True, upload_to="photos")
 
+    def image_thumb(self):
+        return '<img src="/media/%s" width="100" height="100" />' % (self.image)
+    image_thumb.allow_tags = True
+
 class Item(models.Model):
     """
     Модель товаров.
@@ -56,3 +60,14 @@ class Item(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def image_thumb(self):
+        try: 
+            self.photos.all()[0]
+        except:
+            return u'No photo'
+        else:
+            return '<img src="/media/%s" width="100" height="100" />' % (self.photos.all()[0].image)
+
+    image_thumb.allow_tags = True
+

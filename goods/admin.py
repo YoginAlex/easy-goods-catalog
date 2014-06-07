@@ -5,5 +5,12 @@ from goods.models import *
 admin.site.register(Color)
 admin.site.register(Size)
 admin.site.register(Type)
-admin.site.register(Photo)
-admin.site.register(Item)
+
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ('image_thumb',)
+
+class ItemAdmin(admin.ModelAdmin):
+    list_display = ('name', 'image_thumb', 'types', 'quantity', 'cost', 'show')
+
+admin.site.register(Photo, PhotoAdmin)
+admin.site.register(Item, ItemAdmin)
