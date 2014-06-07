@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from datetime import datetime
+from django.conf import settings
 
 class Color(models.Model):
     """
@@ -36,7 +37,7 @@ class Photo(models.Model):
     """
     Модель фоток товаров.
     """
-    image = models.ImageField(upload_to="/photos")
+    image = models.ImageField(null=True, upload_to="photos")
 
 class Item(models.Model):
     """

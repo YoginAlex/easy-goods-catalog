@@ -77,6 +77,9 @@ USE_TZ = True
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
+MEDIA_ROOT="/Users/yogin/Sites/goodslist/media/"
+MEDIA_URL='/media/'
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "templates/static"),
