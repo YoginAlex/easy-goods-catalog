@@ -69,5 +69,28 @@ class Item(models.Model):
         else:
             return '<img src="/media/%s" width="100" height="100" />' % (self.photos.all()[0].image)
 
-    image_thumb.allow_tags = True
+    def colors_list(self):
+        try:
+            self.colors.all()[0]
+        except:
+            return u'-'
+        else:
+            colors_list = ''
+            for obj in self.colors.all():
+                colors_list = colors_list + obj.name +', '
+            return colors_list[:-2]
 
+    def sizes_list(self):
+        try:
+            self.sizes.all()[0]
+        except:
+            return u'-'
+        else:
+            sizes_list = ''
+            for obj in self.sizes.all():
+                sizes_list = sizes_list + obj.name +', '
+            return sizes_list[:-2]
+
+    image_thumb.allow_tags = True
+    colors_list.allow_tags = True
+    sizes_list.allow_tags = True

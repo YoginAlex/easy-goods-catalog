@@ -9,7 +9,7 @@ class PhotoAdmin(admin.ModelAdmin):
     list_display = ('image_thumb',)
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('name', 'image_thumb', 'types', 'quantity', 'cost', 'show', )
+    list_display = ('name', 'image_thumb', 'types', 'colors_list', 'sizes_list', 'quantity', 'cost', 'show',)
 
     def hide_from_site(modeladmin, request, queryset):
         queryset.update(show=False)
