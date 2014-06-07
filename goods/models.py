@@ -37,7 +37,7 @@ class Photo(models.Model):
     """
     Модель фоток товаров.
     """
-    image = models.ImageField(null=True, upload_to="photos")
+    image = models.ImageField(null=True, upload_to="photos", blank=True)
 
     def image_thumb(self):
         return '<img src="/media/%s" width="100" height="100" />' % (self.image)
