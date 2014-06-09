@@ -1,1 +1,29 @@
-<h2>{[{ item.name }]}</h2>
+<div class="col-md-6 text-left">
+    <img ng-src="{[{ item.photos.0.image }]}" alt="{[{ item.name }]}" width="400px">
+
+    <div ng-if="(item.photos.0.image != null || item.photos.0.image != undefined)" >
+
+        <ul class="list-inline goods-list">
+            <li ng-repeat="photo in item.photos">
+                <img ng-src="{[{ photo.image }]}" alt="{[{ item.name }]}" width="100px" ng-click="fullImage(photo)">
+            </li>
+        </ul>
+
+    </div>
+    <div ng-if="(item.photos.0.image == null || item.photos.0.image == undefined)" >        
+        <img ng-src="/static/img/no-image.png" width="150px">
+    </div>
+</div>
+
+<div class="col-md-6 text-left">
+    <h2>{[{ item.name }]}</h2>
+    <dl>
+        <dt>Цена</dt>
+        <dd>{[{ item.cost }]}</dd>
+        <dt>Кол-во</dt>
+        <dd>{[{ item.quantity }]}</dd>
+        <dt>Описание</dt>
+        <dd>{[{ item.description }]}</dd>
+    </dl>
+
+</div>

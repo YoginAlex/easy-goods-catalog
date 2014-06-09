@@ -1,8 +1,15 @@
-<ul class="list-inline">
+<ul class="list-inline goods-list">
   <li ng-repeat="item in items">
     <a href="#/item/{[{ item.id }]}">
-        <img ng-if="item.photos" src="{[{item.photos.0.image}]}" alt="{[{ item.name }]}" width="150px">
-        {[{ item.name }]}
+        <div ng-if="(item.photos.0.image != null || item.photos.0.image != undefined)" >        
+            <img ng-src="{[{ item.photos.0.image }]}" alt="{[{ item.name }]}" width="150px">
+        </div>
+        <div ng-if="(item.photos.0.image == null || item.photos.0.image == undefined)" >        
+            <img ng-src="/static/img/no-image.png" width="150px">
+        </div>
+        <div class="text-center">        
+            {[{ item.name }]}
+        </div>
     </a>
   </li> 
 </ul>
