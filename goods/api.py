@@ -9,7 +9,7 @@ class MainList(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = super(MainList, self).get_queryset()
-        return queryset.order_by('?')[:3]
+        return queryset.order_by('?')[:9]
 
 class TypeOfGoodsList(generics.ListAPIView):
     model = Type

@@ -8,7 +8,7 @@ from goods.views import *
 admin.autodiscover()
 
 urlpatterns = patterns('',  
-    url(r'^$', GoodsIndexPage.as_view(), name="index-page"),
+    url(r'^$', IndexPage.as_view(), name="index-page"),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('goods.urls'))

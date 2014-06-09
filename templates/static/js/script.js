@@ -41,10 +41,6 @@ app.controller('TypesCtrl', function($scope, $http, $location) {
     };
 });
 
-// app.controller('FullImageController', function($scope) {
-
-// });
-
 app.controller('MainContentController', function($scope, $http){
     $http.get('api/main_list').success(function(data) {
         $scope.items = data;
