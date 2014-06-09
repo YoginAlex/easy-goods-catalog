@@ -25,6 +25,7 @@ class ItemSerializer(serializers.ModelSerializer):
     types = TypeSerializer(required=False)
     sizes = SizeSerializer(required=False)
     photos = PhotoSerializer(required=False)
+    # photos = serializers.HyperlinkedIdentityField('photos', view_name='itemphoto-list')
 
     class Meta:
         model = Item
