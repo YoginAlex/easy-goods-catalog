@@ -6,12 +6,18 @@
 ## Установка
 0. Желательно использовать `virtualenv`
 1. Установка всех модулей
-    pip install -r requirements.txt
+```
+pip install -r requirements.txt
+```
 2. Поправить `MEDIA_ROOT` в `goodslist/settings.py`
 3. Залить тестовые данные в базу данных
-    make all
+```
+make all
+```
 4. Стартуем
-    ./manage.py runserver
+```
+./manage.py runserver
+```
 
 ## TODO
 - Комментарии в коде
