@@ -26,16 +26,3 @@ class GoodsOfTypeList(generics.ListAPIView):
 class OneItem(generics.RetrieveAPIView):
     model = Item
     serializer_class = ItemSerializer
-
-# class ItemPhotoList(generics.ListAPIView):
-#     model = Photo
-#     serializer_class = PhotoSerializer
-
-#     def get_queryset(self):
-#         queryset = super(ItemPhotoList, self).get_queryset()
-#         return queryset.filter(item__pk=self.kwargs.get('pk'))
-
-# class PhotoDetail(generics.RetrieveAPIView):
-#     model = Photo
-#     serializer_class = PhotoSerializer
-
