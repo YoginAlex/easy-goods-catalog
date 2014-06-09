@@ -1,6 +1,7 @@
 *.log
 *.pot
 *.pyc
+db.sql*
 
 # OS generated files #
 ######################
