@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-from django.db import models
 from datetime import datetime
+
+from django.db import models
 from django.conf import settings
+
 
 class Color(models.Model):
     """
@@ -13,6 +15,7 @@ class Color(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Size(models.Model):
     """
     Модель размеров товаров.
@@ -22,6 +25,7 @@ class Size(models.Model):
 
     def __unicode__(self):
         return self.name
+
 
 class Type(models.Model):
     """
@@ -33,16 +37,22 @@ class Type(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Photo(models.Model):
     """
     Модель фоток товаров.
     """
-    image = models.ImageField(null=True, upload_to="photos", blank=True)
+    image = models.ImageField(null=True,
+                              upload_to="photos",
+                              blank=True)
     # item = models.ForeignKey()
 
     def image_thumb(self):
-        return '<img src="/media/%s" width="100" height="100" />' % (self.image)
+        return '<img src="/media/%s" width="100" height="100" />' \
+               % (self.image)
+
     image_thumb.allow_tags = True
+
 
 class Item(models.Model):
     """
@@ -57,18 +67,19 @@ class Item(models.Model):
     quantity = models.IntegerField(blank=True, null=True)
     cost = models.FloatField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    show = models.BooleanField() # Показывать ли на сайте
+    show = models.BooleanField()  # Показывать ли на сайте
 
     def __unicode__(self):
         return self.name
 
     def image_thumb(self):
-        try: 
+        try:
             self.photos.all()[0]
         except:
             return u'No photo'
         else:
-            return '<img src="/media/%s" width="100" height="100" />' % (self.photos.all()[0].image)
+            return '<img src="/media/%s" width="100" height="100" />' \
+                   % (self.photos.all()[0].image)
 
     def colors_list(self):
         try:
@@ -78,7 +89,7 @@ class Item(models.Model):
         else:
             colors_list = ''
             for obj in self.colors.all():
-                colors_list = colors_list + obj.name +', '
+                colors_list = colors_list + obj.name + ', '
             return colors_list[:-2]
 
     def sizes_list(self):
@@ -89,7 +100,7 @@ class Item(models.Model):
         else:
             sizes_list = ''
             for obj in self.sizes.all():
-                sizes_list = sizes_list + obj.name +', '
+                sizes_list = sizes_list + obj.name + ', '
             return sizes_list[:-2]
 
     image_thumb.allow_tags = True
